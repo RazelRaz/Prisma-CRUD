@@ -88,6 +88,82 @@ export async function POST(req,res){
             }
         })
 
+
+
+        // update
+        const {searchParams} = new URL(req.url)
+        const id = parseInt(searchParams.get('id'))
+        const reqBody = await req.json()
+
+
+        let userUp = await prisma.User.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+        let PostUp = await prisma.Post.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+
+        let CommentUp = await prisma.Comment.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+
+        let TagUp = await prisma.Tag.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+        let CategoryUp = await prisma.Category.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+
+        let PostTagyUp = await prisma.PostTag.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+
+        let PostCategoryUp = await prisma.PostCategory.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+        let PostMetayUp = await prisma.PostMeta.update({
+            where:{id:id},
+            data:{
+                reqBody
+            }
+        })
+
+
+        // delete
+
+
+
+
+
+
             return NextResponse.json( {status:'Success', data: result} )
         }
 
@@ -95,6 +171,8 @@ export async function POST(req,res){
             return NextResponse.json( {status:'fail',data: e} )
         }
 
+
+        
 
 
     //insert one
