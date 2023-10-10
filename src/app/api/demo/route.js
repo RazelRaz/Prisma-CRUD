@@ -159,8 +159,56 @@ export async function POST(req,res){
 
         // delete
 
+        let userDel = await prisma.User.delete({
+            where:{id:id},
+        })
+
+        let PostDel = await prisma.Post.delete({
+            where:{id:id},
+        })
+
+        let CommentDel = await prisma.Comment.delete({
+            where:{id:id},
+        })
+
+        let TagDel = await prisma.Tag.delete({
+            where:{id:id},
+        })
 
 
+        let CategoryDel = await prisma.Category.delete({
+            where:{id:id},
+        })
+
+        let PostTagDel = await prisma.PostTag.delete({
+            where:{id:id},
+        })
+        
+        let PostCategoryDel = await prisma.PostCategory.delete({
+            where:{id:id},
+        })
+
+        let PostMetaDel = await prisma.PostMeta.delete({
+            where:{id:id},
+        })
+
+
+        //find
+        const findres = await prisma.User.findMany();
+
+        const Postres = await prisma.Post.findMany();
+
+        const Commentres = await prisma.Comment.findMany();
+
+        const TagUres = await prisma.Tag.findMany();
+
+        const CategoryRes = await prisma.Category.findMany();
+
+        const PostTagRes = await prisma.PostTag.findMany();
+
+        const PostCategoryRes = await prisma.PostCategory.findMany();
+
+        const PostMetaRes = await prisma.PostMeta.findMany();
 
 
 
@@ -172,46 +220,7 @@ export async function POST(req,res){
         }
 
 
-        
-
-
-    //insert one
-
-    // let data = await prisma.brands.create({
-    //     data:{brandName:'Orange', brandImg:'orange1234.png'}
-    // })
-
-    //insert many
-    // await prisma.brands.createMany({
-    //     data:[
-    //         {brandName:'Orange', brandImg:'orange1234.png'},
-    //         {brandName:'apple', brandImg:'apple.png'},
-    //         {brandName:'candy', brandImg:'candy.png'},
-    //         {brandName:'cola', brandImg:'cola.png'},
-    //         {brandName:'lemon', brandImg:'lemon.png'}
-    //     ]
-    // })
-
-    //Find Many
-    // const list = await prisma.brands.findMany();
-
-    //update query (one)
-    // await prisma.brands.update({
-    //     where:{id:18},
-    //     data:{brandName:'pink', brandImg:'pink.png'}
-    // })
-
-
-    //Delete query
-    // await prisma.brands.delete({
-    //     where:{id:18}
-    // })
-
-
-    //Find
-    // const brands = await prisma.brands.findMany();
-    // console.log(brands);
-
+    
 
     
 }
